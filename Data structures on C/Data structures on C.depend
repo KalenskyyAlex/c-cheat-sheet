@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1662840705 source:c:\users\Олександр\desktop\data structures on c\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.c"
+	"Stack.c"
+
+1662841577 c:\users\Олександр\desktop\data structures on c\arraylist.c
+
+1662841399 c:\users\Олександр\desktop\data structures on c\stack.c
+
+1662841589 source:c:\users\Олександр\desktop\data structures on c\arraylist.c
+
+1662841399 source:c:\users\Олександр\desktop\data structures on c\stack.c
+
