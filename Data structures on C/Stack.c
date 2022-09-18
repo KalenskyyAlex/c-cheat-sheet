@@ -1,3 +1,4 @@
+#include <stdlib.h>
 /*
     Stack is a ArrayList with following restrictions:
         - can add an element only to the end
@@ -13,7 +14,7 @@
                         + removes the last element of the <stack>
                         + decrease <size> by 1
         - Peek(stack); - returns the last element of the <stack>
-        - Contains(stack, object); - returns '1' (true) if the <stack> contains <object>, otherwise '0' (false)
+        - Contains(stack, size, object); - returns '1' (true) if the <stack> contains <object>, otherwise '0' (false)
 */
 
 int * Create_Stack(int * stack, int * size){
@@ -24,41 +25,57 @@ int * Create_Stack(int * stack, int * size){
     return stack;
 }
 
-void Push_Stack(int * stack, int object, int * size){
+void Push_Stack(int ** stack, int object, int * size){
     int index;
 
     // copying the old stack to rewrite it later
     int * stackCopy = malloc(* size);
 
-    for (index = 0; index < size; ++index){
-        stackCopy[index] = stack[index];
+    for (index = 0; index < * size; ++index){
+        stackCopy[index] = (* stack)[index];
     }
 
-    stack = malloc (* size + 1);
+    (*stack) = malloc (* size + 1);
 
     // rewriting from old
     for(index = 0; index < * size; ++index){
-        stack[index] = stackCopy[index];
+        (* stack)[index] = stackCopy[index];
     }
 
     // adding element to the end;
-    stack[* size] = object;
+    (*stack)[* size] = object;
 
     ++(* size);
 }
 
-int Pop_Stack(int * stack, int * size){
+int Pop_Stack(int ** stack, int * size){
     int index;
-    int * newStack = stack;
-
+    int * stackCopy = malloc(* size - 1);
+    int popped_element = (* stack)[* size - 1];
 
     // we just do not write the last element to the <newStack>
     for(index = 0; index < * size - 1; ++index){
-        newStack[index] = stack[index];
+        stackCopy[index] = (* stack)[index];
     }
 
     --(* size);
 
-    stack = newStack;
-    return newStack[* size - 1];
+    (* stack) = stackCopy;
+    return popped_element;
+}
+
+int Peek_Stack(int * stack, int size){
+    return stack[size - 1];
+}
+
+int Contains_Stack(int * stack, int size, int object){
+    int index = 0;
+
+    for (index = 0; index < size; ++index){
+        if (stack[index] == object){
+            return 1;
+        }
+    }
+
+    return 0;
 }

@@ -1,3 +1,4 @@
+#include <stdlib.h>
 /*
     Array list is an array with dynamic size.
 

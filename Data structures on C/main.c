@@ -73,7 +73,33 @@ void stackTest(){
 
     printStructMsg(stack, size, "Empty new Stack");
 
-    Push_Stack(stack, 3, & size);
+    Push_Stack(&stack, 3, & size);
+    Push_Stack(&stack, 8, & size);
+    Push_Stack(&stack, -1, & size);
 
     printStructMsg(stack, size, "Pushed some values to the Stack");
+
+    int popped_element = Pop_Stack(&stack, &size);
+    printStructMsg(stack, size, "Popped one element from the Stack");
+    printf("Popped value: %d\n", popped_element);
+
+    int peeked_element = Peek_Stack(stack, size);
+    printStructMsg(stack, size, "Peeked the last element in the Stack");
+    printf("Last element: %d\n", peeked_element);
+
+    int contains = Contains_Stack(stack, size, 2);
+    if (contains == 0){
+        printf("Stack does not contain 2\n");
+    }
+    else{
+        printf("Stack contains 2\n");
+    }
+
+    contains = Contains_Stack(stack, size, 3);
+    if (contains == 0){
+        printf("Stack does not contain 3\n");
+    }
+    else{
+        printf("Stack contains 3\n");
+    }
 }
