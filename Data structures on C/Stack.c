@@ -8,12 +8,12 @@
 
     Available methods:
         - Create(stack, size); - creates an empty Stack with <size> of '0'
-        - Push(stack, object); - add <object> to the end of <stack>
+        - Push(stack, object, size); - add <object> to the end of <stack>
                                  + increase <size> by 1
-        - Pop(stack); - returns the last element of the <stack>
+        - Pop(stack, size); - returns the last element of the <stack>
                         + removes the last element of the <stack>
                         + decrease <size> by 1
-        - Peek(stack); - returns the last element of the <stack>
+        - Peek(stack, size); - returns the last element of the <stack>
         - Contains(stack, size, object); - returns '1' (true) if the <stack> contains <object>, otherwise '0' (false)
 */
 
@@ -53,7 +53,7 @@ int Pop_Stack(int ** stack, int * size){
     int * stackCopy = malloc(* size - 1);
     int popped_element = (* stack)[* size - 1];
 
-    // we just do not write the last element to the <newStack>
+    // we just do not write the last element to the new <stack>
     for(index = 0; index < * size - 1; ++index){
         stackCopy[index] = (* stack)[index];
     }
