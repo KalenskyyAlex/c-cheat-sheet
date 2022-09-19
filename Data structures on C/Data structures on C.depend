@@ -4,6 +4,8 @@
 	<stdlib.h>
 	"ArrayList.c"
 	"Stack.c"
+	"Queue.c"
+	"LinkedList.c"
 
 1662841577 c:\users\Олександр\desktop\data structures on c\arraylist.c
 
@@ -16,14 +18,25 @@
 1663493129 source:c:\users\Олександр\desktop\c cheat sheets\data structures on c\arraylist.c
 	<stdlib.h>
 
-1663516451 source:c:\users\Олександр\desktop\c cheat sheets\data structures on c\main.c
+1663580695 source:c:\users\Олександр\desktop\c cheat sheets\data structures on c\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Queue.c"
+	"LinkedList.c"
 
 1663516581 source:c:\users\Олександр\desktop\c cheat sheets\data structures on c\stack.c
 	<stdlib.h>
 
-1663516662 c:\users\Олександр\desktop\c cheat sheets\data structures on c\queue.c
+1663516767 c:\users\Олександр\desktop\c cheat sheets\data structures on c\queue.c
 	<stdlib.h>
+
+1663493129 c:\users\Олександр\desktop\c cheat sheets\data structures on c\arraylist.c
+	<stdlib.h>
+
+1663516581 c:\users\Олександр\desktop\c cheat sheets\data structures on c\stack.c
+	<stdlib.h>
+
+1663581007 c:\users\Олександр\desktop\c cheat sheets\data structures on c\linkedlist.c
+	<stdlib.h>
+	<stdio.h>
 

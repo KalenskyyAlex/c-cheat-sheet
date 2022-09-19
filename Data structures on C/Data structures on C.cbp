@@ -34,6 +34,10 @@
 		<Unit filename="ArrayList.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="LinkedList.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Queue.c">
 			<Option compilerVar="CC" />
 			<Option target="&lt;{~None~}&gt;" />

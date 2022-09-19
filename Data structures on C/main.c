@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "Queue.c"
+#include "LinkedList.c"
+
 
 void printStructure(int * structure, int size);
 
 void arrayListTest();
 void stackTest();
 void queueTest();
+void linkedListTest();
 
 int main(){
     printf("Array List\n\n");
@@ -17,6 +21,9 @@ int main(){
 
     printf("\nQueue\n");
     queueTest();
+
+    printf("\nLinkedList\n");
+    linkedListTest();
 }
 
 void printStructure(int * structure, int size){
@@ -141,4 +148,12 @@ void queueTest(){
     else{
         printf("Queue contains 8\n");
     }
+}
+
+void linkedListTest(){
+    int size = 0;
+    struct Node_LinkedList * linkedList = Create_LinkedList(linkedList, &size);
+
+    printf("Empty linkedList: ");
+    Print_LinkedList(linkedList, size);
 }
