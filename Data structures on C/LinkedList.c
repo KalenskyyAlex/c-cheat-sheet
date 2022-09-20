@@ -32,53 +32,56 @@ struct Node_LinkedList{
     struct Node_LinkedList * next;
 };
 
-struct Node_LinkedList * Create_LinkedList(struct Node_LinkedList * linkedList, int * size){
+void Create_LinkedList(struct Node_LinkedList * linkedList, int * size){
     struct Node_LinkedList nullNode;
     nullNode.data = NULL;
     nullNode.next = NULL;
 
-    linkedList = & nullNode;
+    * linkedList = nullNode;
 
     * size = 0; // making sure the <size> is '0'
-
-    return linkedList;
 }
 
-void AddTail_LinkedList(struct Node_LinkedList ** linkedList, int object, int * size){
+void AddTail_LinkedList(struct Node_LinkedList * linkedList, int object, int * size){
     /*
         to add Node to the 'tail':
             1. Create new 'tail' Node
             2. Set Node's <data> to <object>
             3. Set previous 'tail' Node's pointer to new 'tail' Node
-            4. Set new 'tail' Node's to NULL
+            4. Point new 'tail' Node to NULL
     */
-    int index = 0;
 
-    struct Node_LinkedList * head = * linkedList; // we need to traverse from 'head' to 'tail'
+    // steps 1, 2, 4
+    struct Node_LinkedList newTail;
+    newTail.data = malloc(1); // need to allocate some memory before putting a data in it
+    * (newTail.data) = object;
+    newTail.next = NULL; // new 'tail' points to nothing
 
-    struct Node_LinkedList * newTail; // step 1
+    struct Node_LinkedList * head = linkedList; // get 'head', which is exactly the <linkedList>
 
-    (* newTail).data = & object; // step 2
-    (* newTail).next = NULL; // step 4
-
-    // if <linkedList> is filled with nullNode, just replace it
+    // if our 'head' is <nullNode> (see Create_LinkedList) we should actually replace it by our <newTail> node
     if ((* head).data == NULL){
-        * linkedList = newTail; // a 'tail' is a 'head' as well in this case
+        * linkedList = newTail; // step 3
     }
     else{
-        // getting to actual 'tail'
-        for (index = 0; index < * size; ++index){
+        // otherwise we go through up to the last element - our current 'tail'
+        while((* head).next != NULL){
             head = (* head).next;
         }
+        printf("data: %p\n", (* head).next);
 
-        (* head).next = newTail; // step 3
+        (* head).next = & newTail; // step 3
 
+        printf("data: %p\n", (* head).next);
+        printf("data: %d\n", *((* head).data));
+        printf("data: %p\n", & newTail);
+        printf("data: %d\n", *(newTail.data));
     }
-    ++(* size); // increase <size>
-    // note: size isn't actually needed for LinkedList, it's used to safely traverse LinkedList
+
+    ++(* size);
 }
 
-void AddHead_LinkedList(struct Node_LinkedList ** linkedList, int object, int * size){
+void AddHead_LinkedList(struct Node_LinkedList * linkedList, int object, int * size){
     /*
         to add Node to the 'head'
             1. Create new 'head' Node
@@ -86,28 +89,17 @@ void AddHead_LinkedList(struct Node_LinkedList ** linkedList, int object, int * 
             3. Point new 'head' to old;
             4. Point linkedList to new 'head'
     */
-
-    struct Node_LinkedList * head = * linkedList;
-
-    struct Node_LinkedList * newHead; // step 1
-    (* newHead).data = & object; // step 2
-
-    // if <linkedList> is filled with nullNode, just replace it
-    if ((* head).data == NULL){
-        (* newHead).next = NULL;
-        * linkedList = newHead; // a 'head' it a 'tail' as well in this case
-    }
-    else{
-        (* newHead).next = head; // step 3
-        * linkedList = newHead; // step 4
-    }
 }
 
 
-void Print_LinkedList(struct Node_LinkedList * linkedList, int size){
-    for (int index = 0; index < size; ++index){
-        printf("%d ", (* linkedList).data);
-        linkedList = (* linkedList).next;
+void Print_LinkedList(struct Node_LinkedList linkedList, int size, char * additional){
+    printf("%s: ", additional);
+    for (int index = 0; index < size - 1; ++index){
+        printf("%d -> ", *(linkedList.data));
+        linkedList = *(linkedList.next);
     }
-    printf("\n");
+
+    printf("%d -> ", *(linkedList.data));
+
+    printf("NULL\n");
 }

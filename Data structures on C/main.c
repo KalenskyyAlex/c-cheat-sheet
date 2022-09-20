@@ -151,9 +151,33 @@ void queueTest(){
 }
 
 void linkedListTest(){
-    int size = 0;
-    struct Node_LinkedList * linkedList = Create_LinkedList(linkedList, &size);
+    int size = 3;
+    struct Node_LinkedList linkedList;
+    struct Node_LinkedList node2;
+    struct Node_LinkedList node3;
 
-    printf("Empty linkedList: ");
-    Print_LinkedList(linkedList, size);
+    linkedList.data = malloc(1);
+    * (linkedList.data) = 3;
+    linkedList.next = &node2;
+
+    node2.data = malloc(1);
+    * (node2.data) = 5;
+    node2.next = &node3;
+
+    node3.data = malloc(1);
+    * (node3.data) = 2;
+    node3.next = NULL;
+
+    Print_LinkedList(linkedList, size, "Test");
+
+    //Create_LinkedList(&linkedList, &size);
+    //Print_LinkedList(linkedList, size, "Empty list");
+
+    AddTail_LinkedList(& linkedList, 9, & size);
+
+    Print_LinkedList(linkedList, size, "Added some values");
+
+    AddTail_LinkedList(& linkedList, 1, & size);
+
+    Print_LinkedList(linkedList, size, "Added some values");
 }
